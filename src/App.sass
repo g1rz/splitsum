@@ -20,6 +20,33 @@ h1
     font-size: 28px
     text-align: center
 
+h2 
+    margin: 10px 0 
+    font-size: 20px 
+    line-height: 24px
+
+
 .row
     display: flex
     flex-wrap: wrap
+    margin-left: -15px
+    margin-right: -15px
+
+.column
+    width: 50%
+    padding: 0 15px
+
+.btn 
+    display: inline-block
+    padding: 5px 10px
+    border: none
+    border-radius: 2px
+    background-color: $mainColor
+    font-size: 14px
+    line-height: 16px
+    color: #fff
+    cursor: pointer
+    &:hover 
+        background-color: darken($mainColor, 5%)
+    &:active 
+        background-color: darken($mainColor, 10%)
