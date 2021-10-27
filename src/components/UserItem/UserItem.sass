@@ -1,0 +1,64 @@
+@import '../../_variables.sass'
+
+.user-item 
+    display: flex 
+    align-items: center
+    margin: 10px 0
+
+.user-info
+    width: calc(100% - 50px)
+    &__name
+        position: relative
+        display: block
+        overflow: hidden
+        &:after 
+            content: ''
+            position: absolute
+            bottom: 4px
+            width: 100%
+            border-bottom: 1px dotted
+
+    &__pay
+        float: right
+
+    &__item 
+        padding: 0 5px
+
+.user-btns 
+    display: flex
+
+.user-btn
+    position: relative
+    display: block 
+    width: 20px
+    height: 20px
+    border-radius: 2px
+    border: none
+    font-size: 0
+    margin-left: 5px
+    cursor: pointer
+    &::after
+        content: ''
+        width: 14px
+        height: 14px
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+    &--edit 
+        background-color: $secondColor
+        &::after 
+            background: url('./edit.svg') no-repeat center
+        &:hover 
+            background-color: darken($secondColor, 10%)
+        &:active 
+            background-color: darken($secondColor, 20%)
+    &--delete
+        background-color: $mainColor
+        &::after 
+            background: url('./delete.svg') no-repeat center
+        &:hover 
+            background-color: darken($mainColor, 10%)
+        &:active 
+            background-color: darken($mainColor, 20%)
+
