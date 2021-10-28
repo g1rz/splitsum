@@ -2,6 +2,7 @@ import React from 'react';
 
 import './App.sass';
 import Header from './components/Header/Header';
+import ModalAdd from './components/ModalAdd/ModalAdd';
 import Users from './components/Users/Users';
 
 function App() {
@@ -33,6 +34,8 @@ function App() {
 					</div>					
 				</div>
 			</main>
+
+			<ModalAdd/>
 		</div>
 	);
 }
