@@ -1,7 +1,6 @@
 import React from 'react';
 import ModalWrap from '../ModalWrap/ModalWrap';
 
-import './ModalAdd.sass';
 
 const ModalAdd = () => {
     return (
@@ -14,8 +13,16 @@ const ModalAdd = () => {
 
                 <div className="form-group">
                     <label htmlFor="user_pay" className="form-label">Траты:</label>
-                    <input id="user_pay" type="text" name="pay" className="form-input" />
+                    <div className="form-input-wrap form-input-wrap--rub">
+                        <input id="user_pay" type="text" name="pay" className="form-input" />
+                        <span className="form-input-wrap__icon">&#8381;</span>
+                    </div> 
                 </div>
+
+                <div className="form-group form-group--full text-center">
+                    <button className="btn form-btn">Добавить</button>
+                </div>
+                
             </form>
         </ModalWrap>
     )
