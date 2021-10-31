@@ -2,24 +2,32 @@ import React from 'react';
 
 import './App.sass';
 import Header from './components/Header/Header';
-import ModalAdd from './components/ModalAdd/ModalAdd';
+import ModalsUser from './components/ModalUser/ModalsUser';
 import Users from './components/Users/Users';
+
+
+const defaultUsers = [
+	{
+		id: 0,
+		name: 'User 1',
+		pay: 2000,
+		currency: 'руб.'
+	}, {
+		id: 1,
+		name: 'User 2',
+		pay: 3000,
+		currency: 'руб.'
+	}
+];
 
 function App() {
 
-	const [users, setUsers] = React.useState([
-		{
-			id: 0,
-			name: 'User 1',
-			pay: 2000,
-			currency: 'руб.'
-		}, {
-			id: 1,
-			name: 'User 2',
-			pay: 3000,
-			currency: 'руб.'
-		}
-	]);
+	const [users, setUsers] = React.useState(defaultUsers);
+	const [isShowModal, setIsShowModal] = React.useState(true);
+
+	const handleModal = () => {
+		setIsShowModal(!isShowModal);
+	}
 
 	return (
 		<div className="App">
@@ -35,7 +43,10 @@ function App() {
 				</div>
 			</main>
 
-			<ModalAdd/>
+			{isShowModal && 
+				<ModalsUser/>
+			}
+			
 		</div>
 	);
 }
