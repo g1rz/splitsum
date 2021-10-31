@@ -23,7 +23,7 @@ const defaultUsers = [
 function App() {
 
 	const [users, setUsers] = React.useState(defaultUsers);
-	const [isShowModal, setIsShowModal] = React.useState(true);
+	const [isShowModal, setIsShowModal] = React.useState(false);
 
 	const handleModal = () => {
 		setIsShowModal(!isShowModal);
@@ -36,7 +36,9 @@ function App() {
 				<div className="container">
 					<div className="row">
 						<div className="column">
-							<Users users={users}/>
+							<Users 
+								users={users}
+								handleModal={handleModal}/>
 						</div>
 						<div className="column">test</div>
 					</div>					
@@ -44,7 +46,8 @@ function App() {
 			</main>
 
 			{isShowModal && 
-				<ModalsUser/>
+				<ModalsUser
+					handleModal={handleModal}/>
 			}
 			
 		</div>

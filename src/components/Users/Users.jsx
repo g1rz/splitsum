@@ -4,7 +4,7 @@ import UserItem from '../UserItem/UserItem';
 
 import './Users.sass';
 
-const Users = ({users}) => {
+const Users = ({users, handleModal}) => {
 
     const userList = users.map(item => {
         return <UserItem key={item.id} name={item.name} pay={item.pay} currency={item.currency}/>
@@ -13,7 +13,7 @@ const Users = ({users}) => {
     return (
         <ColumnItem 
             title="Пользователи"
-            handleButton={() => console.log('click users')}>
+            handleButton={() => handleModal()}>
             
             {users.length > 0 && userList}
 

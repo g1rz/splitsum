@@ -1,13 +1,34 @@
+import React from 'react';
 import './ModalUser.sass';
 
 
-const ModalsUser = () => {
+const ModalsUser = ({ handleModal }) => {
+
+    const modalRef = React.useRef(null);
+
+    const handleOutsideclick = (e) => {
+        const path = e.path || (e.composedPath && e.composedPath());
+        if (!path.includes(modalRef.current)) {
+            handleModal();
+        }
+    };
+
+    React.useEffect(() => {
+        document.body.addEventListener('click', handleOutsideclick);
+
+        return () => document.body.removeEventListener('click', handleOutsideclick);
+    }, []);
+
     return (
         <div className="modal-wrap">
-            <div className="modal">
+            <div className="modal" ref={modalRef}>
                 <div className="modal__head">
                     <h2 className="modal__title">Добавьте участника</h2>
-                    <button className="modal__close">close</button>
+                    <button 
+                        className="modal__close" 
+                        onClick={ () => handleModal() }>
+                        close
+                    </button>
                 </div>
                 <div className="modal__content">
                     <form className="form">
