@@ -53,6 +53,11 @@ function App() {
 		setUsers(newUsers);
 	}
 
+	const deleteUser = (id) => {
+		const newUsers = users.filter(user => user.id !== id);
+		setUsers(newUsers);
+	}
+
 	return (
 		<div className="App">
 			<Header/>
@@ -63,7 +68,8 @@ function App() {
 							<Users 
 								users={users}
 								handleModal={handleModal}
-								handleEditUser={handleEditUser}/>
+								handleEditUser={handleEditUser}
+								deleteUser={deleteUser}/>
 						</div>
 						<div className="column">test</div>
 					</div>					

@@ -1,6 +1,6 @@
 import './UserItem.sass';
 
-const UserItem = ({id, name, pay, currency, handleEditUser}) => {
+const UserItem = ({id, name, pay, currency, handleEditUser, deleteUser}) => {
     return (
         <div className="user-item">
             <div className="user-info">
@@ -20,7 +20,8 @@ const UserItem = ({id, name, pay, currency, handleEditUser}) => {
                 </button>
                 <button 
                     className="user-btn user-btn--delete"
-                    title="Удалить">
+                    title="Удалить"
+                    onClick={() => deleteUser(id)}>
                     Удалить
                 </button>
             </div>
