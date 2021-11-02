@@ -2,7 +2,7 @@ import React from 'react';
 
 import './App.sass';
 import Header from './components/Header/Header';
-import ModalsUser from './components/ModalUser/ModalsUser';
+import ModalUser from './components/ModalUser/ModalUser';
 import Users from './components/Users/Users';
 
 
@@ -10,13 +10,11 @@ const defaultUsers = [
 	{
 		id: 0,
 		name: 'User 1',
-		pay: 2000,
-		currency: 'руб.'
+		pay: 2000
 	}, {
 		id: 1,
 		name: 'User 2',
-		pay: 3000,
-		currency: 'руб.'
+		pay: 3000
 	}
 ];
 
@@ -27,7 +25,14 @@ function App() {
 
 	const handleModal = () => {
 		setIsShowModal(!isShowModal);
-	}
+	};
+
+	const addUser = (name, pay) => {
+		let id = users.length > 0 ? users[users.length - 1].id + 1 : 0;
+		
+		const newUsers = [...users, {id, name, pay}];
+		setUsers(newUsers);
+	};
 
 	return (
 		<div className="App">
@@ -46,8 +51,9 @@ function App() {
 			</main>
 
 			{isShowModal && 
-				<ModalsUser
-					handleModal={handleModal}/>
+				<ModalUser
+					handleModal={handleModal}
+					addUser={addUser}/>
 			}
 			
 		</div>
