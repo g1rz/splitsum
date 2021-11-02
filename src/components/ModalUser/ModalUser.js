@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import './ModalUser.sass';
 
 
-const ModalUser = ({ handleModal, addUser }) => {
+const ModalUser = ({ handleModal, addUser, users, editUserID, editUser }) => {
 
     const [name, setName] = React.useState('');
     const [pay, setPay] = React.useState('');
@@ -46,7 +46,6 @@ const ModalUser = ({ handleModal, addUser }) => {
     const submitForm = (e) => {
         e.preventDefault();
 
-        console.log(name, pay);
         if (!name) {
             setIsShowNameError(true);
         }
@@ -56,22 +55,41 @@ const ModalUser = ({ handleModal, addUser }) => {
         }
 
         if (name && pay) {
-            addUser(name, parseFloat(pay));
-            handleModal();
+
+            if (editUserID === null) {
+                addUser(name, parseFloat(pay));
+                handleModal();
+            } else {
+                editUser({
+                    id: editUserID, 
+                    name: name, 
+                    pay: parseFloat(pay)
+                });
+                handleModal();
+            }
         }
     }
 
     React.useEffect(() => {
         document.body.addEventListener('click', handleOutsideclick);
 
+        if (editUserID !== null) {
+            const curUser = users.filter((item) => item.id == editUserID)[0];
+            setName(curUser.name);
+            setPay(curUser.pay);
+        }
+
         return () => document.body.removeEventListener('click', handleOutsideclick);
     }, []);
+
+    let title = editUserID === null ? 'Добавьте участника' : 'Редактирование участника';
+    let btnText = editUserID === null ? 'Добавить' : 'Сохранить';
 
     return (
         <div className="modal-wrap">
             <div className="modal" ref={modalRef}>
                 <div className="modal__head">
-                    <h2 className="modal__title">Добавьте участника</h2>
+                    <h2 className="modal__title">{title}</h2>
                     <button 
                         className="modal__close" 
                         onClick={ () => handleModal() }>
@@ -124,7 +142,7 @@ const ModalUser = ({ handleModal, addUser }) => {
                         </div>
 
                         <div className="form-group form-group--full text-center">
-                            <button className="btn form-btn">Добавить</button>
+                            <button className="btn form-btn">{btnText}</button>
                         </div>
                     
                     </form>

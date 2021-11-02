@@ -4,10 +4,18 @@ import UserItem from '../UserItem/UserItem';
 
 import './Users.sass';
 
-const Users = ({users, handleModal}) => {
+const Users = ({users, handleModal, handleEditUser}) => {
 
     const userList = users.map(item => {
-        return <UserItem key={item.id} name={item.name} pay={item.pay} currency={item.currency}/>
+        return (
+            <UserItem 
+                key={item.id} 
+                id={item.id}
+                name={item.name} 
+                pay={item.pay} 
+                currency="руб."
+                handleEditUser={handleEditUser}/>
+        )
     })
 
     return (

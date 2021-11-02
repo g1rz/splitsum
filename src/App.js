@@ -22,8 +22,11 @@ function App() {
 
 	const [users, setUsers] = React.useState(defaultUsers);
 	const [isShowModal, setIsShowModal] = React.useState(false);
+	const [editUserID, setEditUserID] = React.useState(null);
+
 
 	const handleModal = () => {
+		setEditUserID(null);
 		setIsShowModal(!isShowModal);
 	};
 
@@ -34,6 +37,22 @@ function App() {
 		setUsers(newUsers);
 	};
 
+	const handleEditUser = (id) => {
+		setEditUserID(id);
+		setIsShowModal(true);
+	}
+
+	const editUser = (newUser) => {
+		const newUsers = users.map(user => {
+			if (user.id === newUser.id) {
+				return newUser;
+			}
+			return user;
+		});
+
+		setUsers(newUsers);
+	}
+
 	return (
 		<div className="App">
 			<Header/>
@@ -43,7 +62,8 @@ function App() {
 						<div className="column">
 							<Users 
 								users={users}
-								handleModal={handleModal}/>
+								handleModal={handleModal}
+								handleEditUser={handleEditUser}/>
 						</div>
 						<div className="column">test</div>
 					</div>					
@@ -53,7 +73,10 @@ function App() {
 			{isShowModal && 
 				<ModalUser
 					handleModal={handleModal}
-					addUser={addUser}/>
+					addUser={addUser}
+					users={users}
+					editUserID={editUserID}
+					editUser={editUser}/>
 			}
 			
 		</div>
