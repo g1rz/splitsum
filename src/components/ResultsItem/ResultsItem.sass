@@ -1,0 +1,33 @@
+.result-item 
+    display: flex 
+    align-items: flex-start
+    justify-content: space-between
+    padding: 10px 0
+    margin-bottom: 10px
+    border: 1px solid red 
+
+    &__route 
+        position: relative
+        top: -5px
+        font-size: 13px
+        line-height: 15px
+
+        &::before 
+            content: ''
+            width: 80px
+            height: 2px 
+            background-color: #000
+            position: absolute
+            bottom: -10px
+            left: 50%
+            transform: translateX(-50%)
+        &::after
+            content: ''
+            width: 6px
+            height: 6px
+            border-top: 2px solid #000
+            border-right: 2px solid #000
+            position: absolute
+            bottom: -12px
+            left: 100%
+            transform: rotate(45deg)

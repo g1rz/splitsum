@@ -3,6 +3,7 @@ import React from 'react';
 import './App.sass';
 import Header from './components/Header/Header';
 import ModalUser from './components/ModalUser/ModalUser';
+import Results from './components/Results/Results';
 import Users from './components/Users/Users';
 
 
@@ -15,6 +16,14 @@ const defaultUsers = [
 		id: 1,
 		name: 'User 2',
 		pay: 3000
+	}, {
+		id: 2,
+		name: 'User 3',
+		pay: 1500.2
+	}, {
+		id: 3,
+		name: 'User 4',
+		pay: 2804.30
 	}
 ];
 
@@ -71,7 +80,10 @@ function App() {
 								handleEditUser={handleEditUser}
 								deleteUser={deleteUser}/>
 						</div>
-						<div className="column">test</div>
+						<div className="column">
+							<Results
+								users={users}/>
+						</div>
 					</div>					
 				</div>
 			</main>
