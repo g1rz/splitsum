@@ -29,41 +29,41 @@ const ModalUser = ({ handleModal, addUser, users, editUserID, editUser }) => {
 
     const changePay = (e) => {
         const payValue = e.target.value;
-
-        if (payValue === '' || payValue == 0) {
-            setPay('');
-        } else {
-            if ( payValue.match(/^\d*\.?\d*$/gi) ) {
-                setPay(payValue);
-                if (payValue.length > 0) {
-                    setIsShowPayError(false);
-                }
-            }
-        }
+ 
+       
+        if ( payValue.match(/^\d*\.?\d*$/gi) ) {
+            setPay(payValue);
+        } 
         
     };
 
     const submitForm = (e) => {
         e.preventDefault();
 
+        console.log('submit');
+
         if (!name) {
             setIsShowNameError(true);
         }
 
-        if (!pay) {
-            setIsShowPayError(true);
+        if (!pay.match(/^\d*\.?\d*$/gi)) {
+            // setIsShowPayError(true);
+            console.log('dg');
+            setPay(0);
         }
+        console.log(name, pay);
+        if (name) {
 
-        if (name && pay) {
-
+            let tempPay = pay ? parseFloat(pay) : 0;
             if (editUserID === null) {
-                addUser(name, parseFloat(pay));
+                
+                addUser(name, tempPay);
                 handleModal();
             } else {
                 editUser({
                     id: editUserID, 
                     name: name, 
-                    pay: parseFloat(pay)
+                    pay: tempPay
                 });
                 handleModal();
             }

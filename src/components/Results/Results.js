@@ -96,21 +96,21 @@ const Results = ({ users }) => {
             
             {sum > 0 && averageSum > 0 && (
                 <div className="result-general">
-                    <div class="user-info">
-                        <div class="user-info__pay">
-                            <span class="user-info__item">{sum} руб.</span>
+                    <div className="user-info">
+                        <div className="user-info__pay">
+                            <span className="user-info__item">{sum} руб.</span>
                         </div>
-                        <div class="user-info__name">
-                            <span class="user-info__item">Итого</span>
+                        <div className="user-info__name">
+                            <span className="user-info__item">Итого</span>
                         </div>
                     </div>
 
-                    <div class="user-info">
-                        <div class="user-info__pay">
-                            <span class="user-info__item">{averageSum} руб.</span>
+                    <div className="user-info">
+                        <div className="user-info__pay">
+                            <span className="user-info__item">{averageSum} руб.</span>
                         </div>
-                        <div class="user-info__name">
-                            <span class="user-info__item">Среднее</span>
+                        <div className="user-info__name">
+                            <span className="user-info__item">Среднее</span>
                         </div>
                     </div>
                 </div>
