@@ -10,20 +10,34 @@ import Users from './components/Users/Users';
 const defaultUsers = [
 	{
 		id: 0,
-		name: 'User 1',
-		pay: 2000
+		name: 'Ивановы',
+		count: 2,
+		pay: 4100,
+		desc: 'Мясо, сок',
 	}, {
 		id: 1,
-		name: 'User 2',
-		pay: 3000
+		name: 'Петровы',
+		count: 2,
+		pay: 0,
+		desc: '',
 	}, {
 		id: 2,
-		name: 'User 3',
-		pay: 1500.2
+		name: 'Сидоровы',
+		count: 2,
+		pay: 760,
+		desc: 'арбуз, угли',
 	}, {
 		id: 3,
-		name: 'User 4',
-		pay: 2804.30
+		name: 'Дмитрий',
+		count: 1,
+		pay: 1560,
+		desc: 'Пиво, вино, масло',
+	}, {
+		id: 4,
+		name: 'Мария',
+		count: 1,
+		pay: 100,
+		desc: '',
 	}
 ];
 
@@ -39,11 +53,11 @@ function App() {
 		setIsShowModal(!isShowModal);
 	};
 
-	const addUser = (name, pay) => {
+	const addUser = (name, pay, count) => {
         console.log('name ', name, ', pay ', pay);
 		let id = users.length > 0 ? users[users.length - 1].id + 1 : 0;
 		
-		const newUsers = [...users, {id, name, pay}];
+		const newUsers = [...users, {id, name, pay, count}];
 		setUsers(newUsers);
 	};
 

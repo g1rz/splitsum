@@ -1,6 +1,6 @@
 import './UserItem.sass';
 
-const UserItem = ({id, name, pay, currency, handleEditUser, deleteUser}) => {
+const UserItem = ({id, name, pay, count, desc, currency, handleEditUser, deleteUser}) => {
     return (
         <div className="user-item">
             <div className="user-info">
@@ -8,7 +8,12 @@ const UserItem = ({id, name, pay, currency, handleEditUser, deleteUser}) => {
                     <span className="user-info__item">{pay} {currency}</span>
                 </div>
                 <div className="user-info__name">
-                    <span className="user-info__item">{name}</span>
+                    <span className="user-info__item">
+                        <span>{name} / {count}</span>
+                        {desc && (
+                            <small>({desc})</small>
+                        )}
+                    </span>
                 </div>
             </div>
             <div className="user-btns">

@@ -8,6 +8,8 @@ const ModalUser = ({ handleModal, addUser, users, editUserID, editUser }) => {
 
     const [name, setName] = React.useState('');
     const [pay, setPay] = React.useState('');
+    const [count, setCount] = React.useState(1);
+    const [desc, setDesc] = React.useState('');
     const [isShowNameError, setIsShowNameError] = React.useState(false);
     const [isShowPayError, setIsShowPayError] = React.useState(false);
 
@@ -29,12 +31,16 @@ const ModalUser = ({ handleModal, addUser, users, editUserID, editUser }) => {
 
     const changePay = (e) => {
         const payValue = e.target.value;
- 
-       
+
         if ( payValue.match(/^\d*\.?\d*$/gi) ) {
             setPay(payValue);
-        } 
-        
+        }
+    };
+
+    const changeCount = (e) => {
+        setCount(() => {
+            return e.target.value //? e.target.value : 1
+        });
     };
 
     const submitForm = (e) => {
@@ -46,24 +52,25 @@ const ModalUser = ({ handleModal, addUser, users, editUserID, editUser }) => {
             setIsShowNameError(true);
         }
 
-        if (!pay.match(/^\d*\.?\d*$/gi)) {
-            // setIsShowPayError(true);
-            console.log('dg');
-            setPay(0);
-        }
-        console.log(name, pay);
+        // if (!pay.match(/^\d*\.?\d*$/gi)) {
+        //     // setIsShowPayError(true);
+        //     console.log('dg');
+        //     setPay(0);
+        // }
+        console.log(name, pay, count);
         if (name) {
 
             let tempPay = pay ? parseFloat(pay) : 0;
             if (editUserID === null) {
-                
-                addUser(name, tempPay);
+                addUser(name, tempPay, count, desc);
                 handleModal();
             } else {
                 editUser({
                     id: editUserID, 
                     name: name, 
-                    pay: tempPay
+                    pay: tempPay,
+                    count,
+                    desc,
                 });
                 handleModal();
             }
@@ -77,6 +84,8 @@ const ModalUser = ({ handleModal, addUser, users, editUserID, editUser }) => {
             const curUser = users.filter((item) => item.id == editUserID)[0];
             setName(curUser.name);
             setPay(curUser.pay);
+            setCount(curUser.count);
+            setDesc(curUser.desc);
         }
 
         return () => document.body.removeEventListener('click', handleOutsideclick);
@@ -117,6 +126,22 @@ const ModalUser = ({ handleModal, addUser, users, editUserID, editUser }) => {
                                 </div>
                             )}
                         </div>
+                        <div className="form-group">
+                            <label
+                                htmlFor="user_name"
+                                className="form-label">
+                                Кол-во человек:
+                            </label>
+                            <input
+                                id="user_name"
+                                type="text"
+                                name="name"
+                                value={count}
+                                onChange={changeCount}
+                                onBlur={() => count ? count : 1}
+                                className={classNames('form-input')} />
+
+                        </div>
 
                         <div className="form-group">
                             <label 
@@ -134,11 +159,22 @@ const ModalUser = ({ handleModal, addUser, users, editUserID, editUser }) => {
                                     className={classNames('form-input', {'form-input--error': isShowPayError})} />
                                 <span className="form-input-wrap__icon">&#8381;</span>
                             </div> 
-                            {isShowPayError && (
-                                <span className="form-error">
-                                    Введите траты
-                                </span>
-                            )}
+                        </div>
+                        <div className="form-group">
+                            <label 
+                                htmlFor="user_desc" 
+                                className="form-label">
+                                Описание:
+                            </label>
+                            <div className="form-input-wrap">
+                                <input 
+                                    id="user_desc" 
+                                    type="text" 
+                                    name="pay" 
+                                    value={desc}
+                                    onChange={(e) => setDesc(e.target.value)}
+                                    className={classNames('form-input')} />
+                            </div> 
                         </div>
 
                         <div className="form-group form-group--full text-center">

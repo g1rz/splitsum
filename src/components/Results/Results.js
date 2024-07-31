@@ -8,59 +8,62 @@ const Results = ({ users }) => {
 
     const [sum, setSum] = React.useState(0);
     const [averageSum, setAverageSum] = React.useState(0);
-    const [results, setResults ] = React.useState([]);
+    const [results, setResults ] = React.useState([]);
 
 
     React.useEffect(() => {
-        let debtors = [],
-            creditors = [],
-            results = [];
+        let debtors = [],
+            creditors = [],
+            results = [];
 
-        let sum = users.reduce((sum, item) => sum += item.pay, 0);
-        let averageSum = Math.round(sum / users.length * 10) / 10;
+        let sum = users.reduce((sum, item) => sum += item.pay, 0);
+        let countUsers = users.reduce((sum, user) => sum += parseInt(user.count), 0);
+        console.log(countUsers);
+        let averageSum = Math.round(sum / countUsers * 10) / 10;
 
         setSum(sum);
         setAverageSum(averageSum);
-
-        users.map( (item) => {
-            let payDiff = item.pay - averageSum;
-            payDiff = Math.round(payDiff * 100) / 100;
+        console.log(users);
+        users.map( (item) => {
+            let payDiff = (item.pay / parseInt(item.count) - averageSum) * parseInt(item.count);
+            console.log(item.name, payDiff);
+            payDiff = Math.round(payDiff * 100) / 100;
             let newItem = {...item};
-             
-            if ( payDiff > 0 ) {
-                newItem.payDiff = payDiff;
+             
+            if ( payDiff > 0 ) {
+                newItem.payDiff = payDiff;
                 creditors.push(newItem);
-            } else {
-                newItem.payDiff = Math.abs(payDiff);
+            } else {
+                newItem.payDiff = Math.abs(payDiff);
                 debtors.push(newItem);
             }
         });
 
-        while (creditors.length != 0 && debtors.length != 0) {
-            let currCreditor = creditors[0];
-            let currDebtor = debtors[0];
-            let diff = 0;
+        while (creditors.length != 0 && debtors.length != 0) {
+            let currCreditor = creditors[0];
+            let currDebtor = debtors[0];
+            let diff = 0;
             let transaction = 0;
-            if (currCreditor.payDiff < currDebtor.payDiff) {
+            if (currCreditor.payDiff < currDebtor.payDiff) {
                 transaction = currCreditor.payDiff;
-                diff = currDebtor.payDiff - currCreditor.payDiff;
-                diff = Math.round(diff * 10) / 10;
-                currCreditor.payDiff = 0;
-                currDebtor.payDiff = diff;
+                diff = currDebtor.payDiff - currCreditor.payDiff;
+                diff = Math.round(diff * 10) / 10;
+                currCreditor.payDiff = 0;
+                currDebtor.payDiff = diff;
                 creditors.shift();
-             
-            } else if (currCreditor.payDiff > currDebtor.payDiff) {
+             
+            } else if (currCreditor.payDiff > currDebtor.payDiff) {
                 transaction = currDebtor.payDiff;
-                diff = currCreditor.payDiff - currDebtor.payDiff;
-                diff = Math.round(diff * 10) / 10;
-                currCreditor.payDiff = diff;
-                currDebtor.payDiff = 0;
+                diff = currCreditor.payDiff - currDebtor.payDiff;
+                diff = Math.round(diff * 10) / 10;
+                currCreditor.payDiff = diff;
+                currDebtor.payDiff = 0;
                 debtors.shift();
-            } else {
+            } else {
                 transaction = currCreditor.payDiff;
-                diff = currDebtor.payDiff;
-                currCreditor.payDiff = 0;
-                currDebtor.payDiff = 0;
+                diff = currDebtor.payDiff;
+                currCreditor.payDiff = 0;
+                currDebtor.payDiff = 0;
                 creditors.shift();
                 debtors.shift();
             } 
@@ -111,6 +114,14 @@ const Results = ({ users }) => {
                         </div>
                         <div className="user-info__name">
                             <span className="user-info__item">Среднее</span>
+                        </div>
+                    </div>
+                    <div className="user-info">
+                        <div className="user-info__pay">
+                            <span className="user-info__item">{users.reduce((sum, user) => sum += parseInt(user.count), 0)}</span>
+                        </div>
+                        <div className="user-info__name">
+                            <span className="user-info__item">Кол-во человек</span>
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,9 @@ const Users = ({users, handleModal, handleEditUser, deleteUser}) => {
                 key={item.id} 
                 id={item.id}
                 name={item.name} 
-                pay={item.pay} 
+                pay={item.pay}
+                desc={item.desc}
+                count={item.count}
                 currency="руб."
                 handleEditUser={handleEditUser}
                 deleteUser={deleteUser}/>
