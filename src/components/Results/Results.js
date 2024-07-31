@@ -18,15 +18,15 @@ const Results = ({ users }) => {
 
         let sum = users.reduce((sum, item) => sum += item.pay, 0);
         let countUsers = users.reduce((sum, user) => sum += parseInt(user.count), 0);
-        console.log(countUsers);
+
         let averageSum = Math.round(sum / countUsers * 10) / 10;
 
         setSum(sum);
         setAverageSum(averageSum);
-        console.log(users);
+
         users.map( (item) => {
             let payDiff = (item.pay / parseInt(item.count) - averageSum) * parseInt(item.count);
-            console.log(item.name, payDiff);
+
             payDiff = Math.round(payDiff * 100) / 100;
             let newItem = {...item};
              

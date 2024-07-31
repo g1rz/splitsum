@@ -46,8 +46,6 @@ const ModalUser = ({ handleModal, addUser, users, editUserID, editUser }) => {
     const submitForm = (e) => {
         e.preventDefault();
 
-        console.log('submit');
-
         if (!name) {
             setIsShowNameError(true);
         }
@@ -57,7 +55,6 @@ const ModalUser = ({ handleModal, addUser, users, editUserID, editUser }) => {
         //     console.log('dg');
         //     setPay(0);
         // }
-        console.log(name, pay, count);
         if (name) {
 
             let tempPay = pay ? parseFloat(pay) : 0;

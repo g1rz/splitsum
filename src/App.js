@@ -54,7 +54,6 @@ function App() {
 	};
 
 	const addUser = (name, pay, count) => {
-        console.log('name ', name, ', pay ', pay);
 		let id = users.length > 0 ? users[users.length - 1].id + 1 : 0;
 		
 		const newUsers = [...users, {id, name, pay, count}];
@@ -67,7 +66,6 @@ function App() {
 	}
 
 	const editUser = (newUser) => {
-        console.log(newUser);
 		const newUsers = users.map(user => {
 			if (user.id === newUser.id) {
 				return newUser;
