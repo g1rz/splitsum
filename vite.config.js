@@ -1,5 +1,6 @@
 import { defineConfig, transformWithEsbuild  } from 'vite';
 import react from '@vitejs/plugin-react';
+import path from 'path';
 
 export default defineConfig({
 	plugins: [
@@ -23,6 +24,9 @@ export default defineConfig({
 		outDir: '../build', // Указываем, что выходная директория - build
 	},
 	resolve: {
+		alias: {
+			'@': path.resolve(__dirname, 'src'),
+		},
 		extensions: ['.js', '.jsx', '.json'],
 	},
 	optimizeDeps: {
