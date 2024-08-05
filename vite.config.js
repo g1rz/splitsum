@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
+	base: './',
 	plugins: [
 		{
 			name: 'treat-js-files-as-jsx',
@@ -19,9 +20,8 @@ export default defineConfig({
 		},
 		react()
 	],
-	root: './src', // Указываем, что корневая директория - src
 	build: {
-		outDir: '../build', // Указываем, что выходная директория - build
+		outDir: './build', // Указываем, что выходная директория - build
 	},
 	resolve: {
 		alias: {

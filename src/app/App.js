@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './App.sass';
+import './styles/index.sass';
 import Header from '@/widgets/Header/Header';
 import ModalUser from '@/widgets/ModalUser/ModalUser';
 import Results from '@/widgets/Results/Results';
