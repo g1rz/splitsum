@@ -1,10 +1,10 @@
 import React from 'react';
 
 import './App.sass';
-import Header from '@/components/Header/Header';
-import ModalUser from '@/components/ModalUser/ModalUser';
-import Results from '@/components/Results/Results';
-import Users from '@/components/Users/Users';
+import Header from '@/widgets/Header/Header';
+import ModalUser from '@/widgets/ModalUser/ModalUser';
+import Results from '@/widgets/Results/Results';
+import Users from '@/widgets/Users/Users';
 
 
 const defaultUsers = [
