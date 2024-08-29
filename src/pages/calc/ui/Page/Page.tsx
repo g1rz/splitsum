@@ -48,6 +48,8 @@ export const CalcPage = () => {
     const [editUserID, setEditUserID] = useState(null);
 
     const handleModal = () => {
+        console.log('cloise');
+
         setEditUserID(null);
         setIsShowModal(!isShowModal);
     };
