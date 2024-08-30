@@ -1,7 +1,13 @@
-import React from 'react';
+import { ReactNode } from 'react';
+import { Layout } from '~/shared/ui/Layout/Layout';
+import { LayoutHeader } from '~/widgets/LayoutHeader';
 
-const baseLayout = () => {
-    return <div>baseLayout</div>;
+type TBaseLayout = {
+    children: ReactNode;
 };
 
-export default baseLayout;
+const BaseLayout = ({ children }: TBaseLayout) => {
+    return <Layout headerSlot={<LayoutHeader />}>{children}</Layout>;
+};
+
+export default BaseLayout;

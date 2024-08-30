@@ -1,7 +1,12 @@
 import { CalcPage } from '~/pages/calc';
+import BaseLayout from './layouts/baseLayout';
 
 const App = () => {
-    return <CalcPage />;
+    return (
+        <BaseLayout>
+            <CalcPage />
+        </BaseLayout>
+    );
 };
 
 export default App;

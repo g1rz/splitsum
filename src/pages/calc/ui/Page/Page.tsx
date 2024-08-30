@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import Header from '~/widgets/Header/Header';
+import { Container } from '~/shared/ui';
+import Header from '~/widgets/LayoutHeader/LayoutHeader';
 import ModalUser from '~/widgets/ModalUser/ModalUser';
 import Results from '~/widgets/Results/Results';
 import Users from '~/widgets/Users/Users';
@@ -83,25 +84,22 @@ export const CalcPage = () => {
     };
 
     return (
-        <div className="App">
-            <Header />
-            <main>
-                <div className="container">
-                    <div className="row">
-                        <div className="column">
-                            <Users
-                                users={users}
-                                handleModal={handleModal}
-                                handleEditUser={handleEditUser}
-                                deleteUser={deleteUser}
-                            />
-                        </div>
-                        <div className="column">
-                            <Results users={users} />
-                        </div>
+        <>
+            <Container>
+                <div className="row">
+                    <div className="column">
+                        <Users
+                            users={users}
+                            handleModal={handleModal}
+                            handleEditUser={handleEditUser}
+                            deleteUser={deleteUser}
+                        />
+                    </div>
+                    <div className="column">
+                        <Results users={users} />
                     </div>
                 </div>
-            </main>
+            </Container>
 
             {isShowModal && (
                 <ModalUser
@@ -112,6 +110,6 @@ export const CalcPage = () => {
                     editUser={editUser}
                 />
             )}
-        </div>
+        </>
     );
 };
