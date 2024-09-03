@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Product } from './types';
+import { Product, ProductId } from './types';
 
 const initialState: Product[] = [];
 
@@ -17,3 +17,6 @@ export const productsSlice = createSlice({
 export const { addProduct } = productsSlice.actions;
 
 export const selectAllProducts = (state: RootState) => state.users;
+export const selectProductById = (state: RootState, productId: ProductId) => {
+    state.products.find((product) => product.id === productId) || null;
+};
