@@ -1,2 +1,2 @@
 export { productsSlice, selectAllProducts } from './model/slice';
-export { type TProduct } from './model/types';
+export { type Product } from './model/types';

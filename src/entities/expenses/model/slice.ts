@@ -1,19 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { TProduct } from './types';
+import { Expense } from './types';
 
-const initialState: TProduct[] = [];
+const initialState: Expense[] = [];
 
-export const productsSlice = createSlice({
-    name: 'products',
+export const expenseSlice = createSlice({
+    name: 'expenses',
     initialState,
     reducers: {
-        addProduct: (state, action: PayloadAction<TProduct>) => {
+        addExpense: (state, action: PayloadAction<Expense>) => {
             state.push(action.payload);
         },
     },
 });
 
-export const { addProduct } = productsSlice.actions;
+export const { addExpense } = expenseSlice.actions;
 
-export const selectAllProducts = (state: RootState) => state.users;
+export const selectAllExpenses = (state: RootState) => state.expenses;

@@ -1,2 +1,2 @@
-export { productsSlice, selectAllProducts } from './model/slice';
-export { type TExpense } from './model/types';
+export { expenseSlice, selectAllExpenses } from './model/slice';
+export { type Expense, type ExpenseId } from './model/types';
