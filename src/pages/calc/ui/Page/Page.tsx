@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { selectAllUsers } from '~/entities/user';
+import { useAppSelector } from '~/shared/model/hooks';
 import { Container } from '~/shared/ui';
 import Header from '~/widgets/LayoutHeader/LayoutHeader';
 import ModalUser from '~/widgets/ModalUser/ModalUser';
@@ -48,6 +50,8 @@ export const CalcPage = () => {
     const [isShowModal, setIsShowModal] = useState(false);
     const [editUserID, setEditUserID] = useState(null);
 
+    const usersRX = useAppSelector(selectAllUsers);
+
     const handleModal = () => {
         console.log('cloise');
 
@@ -82,6 +86,10 @@ export const CalcPage = () => {
         const newUsers = users.filter((user) => user.id !== id);
         setUsers(newUsers);
     };
+
+    useEffect(() => {
+        console.log(usersRX);
+    }, []);
 
     return (
         <>
