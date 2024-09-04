@@ -1,13 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
-import { expenseSlice } from '~/entities/expenses/model/slice';
 import { productsSlice } from '~/entities/products';
 import { usersSlice } from '~/entities/user';
 
 const store = configureStore({
     reducer: {
         users: usersSlice.reducer,
-        expenses: expenseSlice.reducer,
         products: productsSlice.reducer,
     },
 });
