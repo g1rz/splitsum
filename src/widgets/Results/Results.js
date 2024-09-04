@@ -1,5 +1,5 @@
 import React from 'react';
-import ColumnItem from '../ColumnItem/ColumnItem';
+import {ColumnItem} from '~/shared/ui';
 import ResultsItem from '../ResultsItem/ResultsItem';
 
 import './Results.sass';
