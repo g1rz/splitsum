@@ -7,5 +7,6 @@ export type User = {
     name: string;
     count: number;
     expenses: number;
+    products?: string;
     productIDs?: ProductId[];
 };

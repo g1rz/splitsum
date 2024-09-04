@@ -2,7 +2,26 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { User, UserId } from './types';
 
-const initialState: User[] = [];
+const initialState: User[] = [
+    {
+        id: '1' as UserId,
+        name: 'sd',
+        count: 1,
+        expenses: 0,
+    },
+    {
+        id: '2' as UserId,
+        name: 'dfb',
+        count: 1,
+        expenses: 0,
+    },
+    {
+        id: '3' as UserId,
+        name: 'sdfbd',
+        count: 1,
+        expenses: 0,
+    },
+];
 
 export const usersSlice = createSlice({
     name: 'users',
