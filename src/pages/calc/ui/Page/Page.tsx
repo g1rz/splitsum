@@ -5,7 +5,7 @@ import { Container } from '~/shared/ui';
 import Header from '~/widgets/LayoutHeader/LayoutHeader';
 import ModalUser from '~/widgets/ModalUser/ModalUser';
 import Results from '~/widgets/Results/Results';
-import Users from '~/widgets/Users/Users';
+import { Users } from '~/widgets/Users';
 
 const defaultUsers = [
     {
