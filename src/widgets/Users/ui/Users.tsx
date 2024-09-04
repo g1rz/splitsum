@@ -1,38 +1,41 @@
-import React from 'react';
+import { selectAllUsers, User } from '~/entities/user';
+import { useAppSelector } from '~/shared/model/hooks';
 import { ColumnItem } from '~/shared/ui';
-import UserItem from '../UserItem/UserItem';
 
-import './Users.sass';
+import style from './Users.module.scss';
+import UserItem from '~/widgets/UserItem/UserItem';
 
-const Users = ({ users, handleModal, handleEditUser, deleteUser }) => {
-    const userList = users.map((item) => {
+export const Users = () => {
+    const users = useAppSelector(selectAllUsers);
+
+    const userList = users.map((item: User) => {
         return (
             <UserItem
                 key={item.id}
                 id={item.id}
                 name={item.name}
-                pay={item.pay}
-                desc={item.desc}
+                pay={item.expenses}
+                desc={item.products}
                 count={item.count}
                 currency="руб."
-                handleEditUser={handleEditUser}
-                deleteUser={deleteUser}
+                // handleEditUser={handleEditUser}
+                // deleteUser={deleteUser}
             />
         );
     });
 
     return (
-        <ColumnItem title="Пользователи" handleButton={() => handleModal()}>
+        <ColumnItem title="Пользователи">
             {users.length > 0 && userList}
 
             {users.length === 0 && (
-                <div className="empty">
-                    <div className="empty__text">
+                <div className={style.empty}>
+                    <div className={style.empty__text}>
                         <p>Список участников пуст</p>
                         <p></p>
                     </div>
                     <svg
-                        className="empty__icon"
+                        className={style.empty__icon}
                         x="0px"
                         y="0px"
                         viewBox="0 0 490.2 490.2"
@@ -45,5 +48,3 @@ const Users = ({ users, handleModal, handleEditUser, deleteUser }) => {
         </ColumnItem>
     );
 };
-
-export default Users;
